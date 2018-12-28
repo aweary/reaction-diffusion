@@ -1,0 +1,15 @@
+{
+  "name": "reaction-diffusion",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Brandon Dail",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc index.ts",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
