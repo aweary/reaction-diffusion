@@ -28,6 +28,8 @@ const diffusion = new ReactionDiffusion(
 );
 ```
 
+### Starting the reaction
+
 To fill the grid with some starting "chemicals" use the `fill` method.
 
 This would fill a rectangle at coordinates (50, 150) that is 10 pixels wide and 20 pixels tall.
@@ -38,9 +40,13 @@ diffusion.fill(50, 150, 10, 20)
 
 Now you need to manually call the `tick` method so that it processes the next step in the reaction-diffusion process. This is something you'd usually do within your `requestAnimationFrame` calback before using any of the values
 
+### Processing the next step
+
 ```js
 diffusion.tick()
 ```
+
+### Using the grid values
 
 The sytem is accessible via the `grid` property, which is a square grid of `size` width and `size` height. It's an array of arrays, so to access the cell at (50, 150) you would do:
 
@@ -49,3 +55,11 @@ diffusion.grid[50][150]
 ```
 
 Each cell is an object with an `a` and `b` property, which will be bewteen `0` and `1`. The system is setup so that `b` is the starting chemical and will diffuse into `a`.
+
+### Before the next tick... 
+
+Before the next tick you'll want to call `swap`. It uses a double-buffer which currently needs to be explicitly swapped before the next tick or else the system will stall
+
+```js
+diffusion.swap()
+```
